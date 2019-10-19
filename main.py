@@ -1,5 +1,6 @@
 import requests
 import os
+import subprocess
 from plexapi.myplex import MyPlexAccount
 
 # Get environment variables
@@ -15,5 +16,6 @@ try:
     print("Plex is up!")
 except:
     print("RESTARTING PLEX...")
-    os.system("taskkill /f /im  Plex Media Server.exe")
+    os.system("taskkill /f /im  \"Plex Media Server.exe\"")
+    # subprocess.call(['"C:\\Program Files (x86)\\Plex\\Plex Media Server\\Plex Media Server.exe"'])
     os.system('"C:\\Program Files (x86)\\Plex\\Plex Media Server\\Plex Media Server.exe"')
