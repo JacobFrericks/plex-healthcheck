@@ -1,6 +1,6 @@
-import requests
 import os
 import subprocess
+import time
 from plexapi.myplex import MyPlexAccount
 
 # Get environment variables
@@ -9,15 +9,16 @@ PASSWORD = os.environ.get('PLEX_PASSWORD')
 SERVERNAME = os.environ.get('PLEX_SERVER_NAME')
 
 account = MyPlexAccount(USER, PASSWORD)
+ftime = time.strftime('[ %m/%d/%y %I:%M:%S ]  -  ')
 
 try:
     plex = account.resource(SERVERNAME).connect()
     movies = plex.library.section('Movies')
-    print("Plex is up!")
+    print(ftime + "Plex is up!")
 except:
-    print("Plex is down! Attempting to restart...")
-    print("Killing PLEX...")
+    print(ftime + "Plex is down! Attempting to restart...")
+    print(ftime + "Killing PLEX...")
     os.system("taskkill /f /im  \"Plex Media Server.exe\" >nul 2>&1")
-    print("Starting PLEX...")
+    print(ftime + "Starting PLEX...")
     os.chdir("C:\\Program Files (x86)\\Plex\\Plex Media Server\\")
     subprocess.Popen(["Plex Media Server.exe"])
