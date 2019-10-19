@@ -15,7 +15,9 @@ try:
     movies = plex.library.section('Movies')
     print("Plex is up!")
 except:
-    print("RESTARTING PLEX...")
-    os.system("taskkill /f /im  \"Plex Media Server.exe\"")
-    # subprocess.call(['"C:\\Program Files (x86)\\Plex\\Plex Media Server\\Plex Media Server.exe"'])
-    os.system('"C:\\Program Files (x86)\\Plex\\Plex Media Server\\Plex Media Server.exe"')
+    print("Plex is down! Attempting to restart...")
+    print("Killing PLEX...")
+    os.system("taskkill /f /im  \"Plex Media Server.exe\" >nul 2>&1")
+    print("Starting PLEX...")
+    os.chdir("C:\\Program Files (x86)\\Plex\\Plex Media Server\\")
+    subprocess.Popen(["Plex Media Server.exe"])
