@@ -1,4 +1,5 @@
-This script will verify that the plex server is up and running. If it is not, ti will kill the app and attempt to restart it.
+# Plex Healthcheck
+This script will verify that the plex server is up and running. If it is not, it will kill the app and attempt to restart it.
 
 A few environment variables are necessary before running the script:
 
